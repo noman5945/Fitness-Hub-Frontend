@@ -1,3 +1,11 @@
+import { Categories } from "../components/Categories";
+import { Hero } from "../components/Hero";
+
 export const Home = () => {
-  return <div>Home</div>;
+  return (
+    <>
+      <Hero />
+      <Categories />
+    </>
+  );
 };
