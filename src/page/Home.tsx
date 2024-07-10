@@ -1,4 +1,5 @@
 import { Categories } from "../components/Categories";
+import { Featured } from "../components/Featured";
 import { Hero } from "../components/Hero";
 
 export const Home = () => {
@@ -6,6 +7,7 @@ export const Home = () => {
     <>
       <Hero />
       <Categories />
+      <Featured />
     </>
   );
 };
