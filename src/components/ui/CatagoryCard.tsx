@@ -9,7 +9,10 @@ export const CatagoryCard = () => {
           Cardio
         </h3>
         <div className="  justify-center opacity-0  group-hover:opacity-100 ">
-          <Button title="Explore" />
+          <Button
+            customStyle="block w-full rounded bg-blue-700 px-9 py-2 text-sm font-medium text-white shadow hover:bg-blue-800 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
+            title="Explore"
+          />
         </div>
       </div>
     </div>
