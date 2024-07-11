@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import defaultProd from "../../assets/Products/Dumbell.jpg";
 import { Button } from "./Button";
 type ProductCardProps = {
@@ -12,6 +13,10 @@ export const ProductCard = ({
   price,
   qty,
 }: ProductCardProps) => {
+  const navigate = useNavigate();
+  const goToDetails = () => {
+    navigate("/product-details");
+  };
   return (
     <div className="w-[300px] p-1 max-w-sm bg-white border border-gray-200 flex flex-col rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
       <img className=" rounded-t-lg" src={defaultProd} alt="product image" />
@@ -27,6 +32,7 @@ export const ProductCard = ({
         <Button
           customStyle="block w-full rounded bg-blue-700 px-9 py-2 text-sm font-medium text-white shadow hover:bg-blue-800 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
           title="Details"
+          onClickFunc={goToDetails}
         ></Button>
       </div>
     </div>
