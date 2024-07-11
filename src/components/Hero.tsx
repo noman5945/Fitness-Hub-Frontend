@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const Hero = () => {
   return (
     <section className="relative bg-hero-pattern bg-cover bg-center bg-no-repeat">
@@ -19,12 +21,12 @@ export const Hero = () => {
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center justify-center">
-            <a
-              href="#"
+            <NavLink
+              to={"/products"}
               className="block w-full rounded bg-blue-700 px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-800 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
             >
               Explore Products
-            </a>
+            </NavLink>
           </div>
         </div>
       </div>
