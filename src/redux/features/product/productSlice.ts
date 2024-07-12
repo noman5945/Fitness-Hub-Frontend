@@ -5,7 +5,7 @@ type ProductType = {
   name: string | null;
   description: string | null;
   price: number | null;
-  catagory: string | null;
+  category: string | null;
   Qty: number | null;
   weight: number | null;
   img: string | null;
@@ -16,7 +16,7 @@ const ProductInitalState: ProductType = {
   name: null,
   description: null,
   price: null,
-  catagory: null,
+  category: null,
   Qty: null,
   weight: null,
   img: null,
@@ -31,7 +31,7 @@ const productSlice = createSlice({
       state.name = action.payload.name;
       state.description = action.payload.description;
       state.price = action.payload.price;
-      state.catagory = action.payload.catagory;
+      state.category = action.payload.category;
       state.Qty = action.payload.Qty;
       state.weight = action.payload.weight;
       state.img = action.payload.img;

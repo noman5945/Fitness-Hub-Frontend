@@ -1,6 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import defaultProd from "../../assets/Products/Dumbell.jpg";
 import { Button } from "./Button";
+import { useAppDispatch } from "../../redux/hook";
+import { setProductID } from "../../redux/features/product/productSlice";
 type ProductCardProps = {
   name: string;
   category: string;
@@ -8,6 +10,7 @@ type ProductCardProps = {
   qty: number;
   img: string;
   _id: string;
+  description: string;
 };
 export const ProductCard = ({
   name,
@@ -16,9 +19,21 @@ export const ProductCard = ({
   qty,
   img,
   _id,
+  description,
 }: ProductCardProps) => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const goToDetails = () => {
+    const productData = {
+      name,
+      category,
+      price,
+      qty,
+      img,
+      _id,
+      description,
+    };
+    dispatch(setProductID(productData._id));
     navigate("/product-details");
   };
   return (

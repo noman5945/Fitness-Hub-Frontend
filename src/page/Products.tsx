@@ -57,11 +57,12 @@ export const Products = () => {
               <ProductCard
                 key={product._id}
                 name={product.name}
-                category={product.catagory}
+                category={product.category}
                 price={product.price}
                 qty={product.Qty}
                 img={product.img}
                 _id={product._id}
+                description={product.description}
               />
             );
           })
