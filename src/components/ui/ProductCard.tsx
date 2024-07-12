@@ -6,12 +6,16 @@ type ProductCardProps = {
   category: string;
   price: number;
   qty: number;
+  img: string;
+  _id: string;
 };
 export const ProductCard = ({
   name,
   category,
   price,
   qty,
+  img,
+  _id,
 }: ProductCardProps) => {
   const navigate = useNavigate();
   const goToDetails = () => {
@@ -19,7 +23,11 @@ export const ProductCard = ({
   };
   return (
     <div className="w-[300px] p-1 max-w-sm bg-white border border-gray-200 flex flex-col rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
-      <img className=" rounded-t-lg" src={defaultProd} alt="product image" />
+      <img
+        className=" rounded-t-lg w-[300px] h-[200px]"
+        src={img ? img : defaultProd}
+        alt="product image"
+      />
       <div className="block p-2">
         <p className=" font-bold text-lg">{name}</p>
         <p className=" overflow-hidden font-normal text-base">{category}</p>
