@@ -2,11 +2,13 @@ import exampleProduct from "../assets/Products/Dumbell.jpg";
 import { Button } from "../components/ui/Button";
 import { Loader } from "../components/ui/Loader";
 import { benefits } from "../constants/BenefitsParagraph";
+import { cartStructure, setCartItems } from "../redux/features/cart/cartSlice";
 import { useGetSingleProductbyIDQuery } from "../redux/features/product/productAPI";
-import { useAppSelector } from "../redux/hook";
+import { useAppDispatch, useAppSelector } from "../redux/hook";
 import { TProduct } from "../types/product.type";
 export const ProductDetails = () => {
   const { _id } = useAppSelector((state) => state.product);
+  const dispatch = useAppDispatch();
   let product = {};
   let errors;
   let loading;
@@ -21,6 +23,18 @@ export const ProductDetails = () => {
     return <Loader />;
   }
   const Product: TProduct = { ...product };
+  const addItemToCart = () => {
+    const singleCartItem: cartStructure = {
+      _id: Product._id,
+      name: Product.name,
+      price: Product.price,
+      Qty: Product.Qty,
+      customerQty: 1,
+      purchasePrice: Product.price,
+    };
+    dispatch(setCartItems(singleCartItem));
+  };
+
   return (
     <div className=" flex flex-col items-center mt-[100px]">
       <div className=" text-center my-[20px]">
@@ -52,7 +66,7 @@ export const ProductDetails = () => {
               Stock: {Product ? Product.Qty : "stock_number"} pcs
             </p>
           </div>
-          <Button title="ADD TO CART"></Button>
+          <Button onClickFunc={addItemToCart} title="ADD TO CART"></Button>
         </div>
       </div>
     </div>
