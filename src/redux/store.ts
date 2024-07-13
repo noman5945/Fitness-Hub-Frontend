@@ -1,5 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import productReducer from "./features/product/productSlice";
+import categoryReducer from "./features/product/categorySlice";
 import { baseAPI } from "./API/baseAPI";
 import {
   persistReducer,
@@ -24,6 +25,7 @@ export const store = configureStore({
   reducer: {
     [baseAPI.reducerPath]: baseAPI.reducer,
     product: persistedProdIDReducer,
+    optionalCategory: categoryReducer,
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

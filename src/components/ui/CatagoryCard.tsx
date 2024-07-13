@@ -1,4 +1,7 @@
+import { useNavigate } from "react-router-dom";
 import defaultImg from "../../assets/Category/cardio-category.jpg";
+import { setOptionalCategory } from "../../redux/features/product/categorySlice";
+import { useAppDispatch } from "../../redux/hook";
 import { Button } from "./Button";
 
 type CatagoryProps = {
@@ -6,6 +9,12 @@ type CatagoryProps = {
   img: string;
 };
 export const CatagoryCard = ({ title, img }: CatagoryProps) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const goToProduct = () => {
+    dispatch(setOptionalCategory(title));
+    navigate("/products");
+  };
   return (
     <div className=" relative text-center ">
       <img
@@ -18,6 +27,7 @@ export const CatagoryCard = ({ title, img }: CatagoryProps) => {
         </h3>
         <div className="  justify-center opacity-0  group-hover:opacity-100 ">
           <Button
+            onClickFunc={goToProduct}
             customStyle="block w-full rounded bg-blue-700 px-9 py-2 text-sm font-medium text-white shadow hover:bg-blue-800 focus:outline-none focus:ring active:bg-rose-500 sm:w-auto"
             title="Explore"
           />

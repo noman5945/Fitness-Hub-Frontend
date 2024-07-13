@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ErrorSection } from "../components/ErrorSection";
 import { Button } from "../components/ui/Button";
 import { Loader } from "../components/ui/Loader";
@@ -7,12 +7,19 @@ import { SearchBar } from "../components/ui/SearchBar";
 import { SearchCategory } from "../components/ui/SearchCategory";
 import { useGetAllProductsQuery } from "../redux/features/product/productAPI";
 import { TProduct } from "../types/product.type";
+import { useAppSelector } from "../redux/hook";
 
 export const Products = () => {
   const [prodName, setProdname] = useState("");
   const [catagory, setCategory] = useState("");
+  const { category } = useAppSelector((state) => state.optionalCategory);
   let refinedCatagory: string;
   const [params, setParams] = useState<undefined | string | Object>(undefined);
+  useEffect(() => {
+    if (category) {
+      setParams({ name: "", category: category.toLowerCase() });
+    }
+  }, [category]);
   const { data: products, error, isLoading } = useGetAllProductsQuery(params);
   if (error) {
     let errorMsg = "";
