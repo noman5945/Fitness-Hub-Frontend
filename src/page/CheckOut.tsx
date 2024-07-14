@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { Button } from "../components/ui/Button";
 import { Table } from "../components/ui/Table";
 import { useUpdateProductsMutation } from "../redux/features/cart/cartAPI";
@@ -6,7 +7,9 @@ import { useAppDispatch, useAppSelector } from "../redux/hook";
 
 export const CheckOut = () => {
   const { cartItem } = useAppSelector((state) => state.cart);
-  const [updateProducts, { isError, isSuccess }] = useUpdateProductsMutation();
+  const navigate = useNavigate();
+  const [updateProducts, { isError, isSuccess, error }] =
+    useUpdateProductsMutation();
   const dispatch = useAppDispatch();
   let total = 0;
   cartItem.forEach((item) => {
@@ -17,8 +20,12 @@ export const CheckOut = () => {
     updateProducts(cartItem);
     console.log(isError);
     console.log(isSuccess);
+    console.log(error);
     if (isSuccess) {
       dispatch(emptyCart());
+      navigate("/payment-success");
+    } else if (isError) {
+      navigate("/payment-error");
     }
   };
   return (

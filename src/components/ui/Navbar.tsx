@@ -1,9 +1,14 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import NavbarLinks from "../../constants/NavbarLinks";
 import { CartIcon } from "../../assets/icons/CartIcon";
+import { useAppSelector } from "../../redux/hook";
+//import { useState } from "react";
 
 export const Navbar = () => {
   const navigate = useNavigate();
+
+  const { cartItem } = useAppSelector((state) => state.cart);
+
   const navChangePage = (link: string) => {
     navigate(link);
   };
@@ -22,14 +27,17 @@ export const Navbar = () => {
             </span>
           </div>
         </NavLink>
-        <div className="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
+        <div className="flex items-center  md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
           <button
-            className=" mx-4"
+            className=" mx-4 flex flex-row items-start "
             onClick={() => {
               navChangePage("/cart");
             }}
           >
             <CartIcon />
+            <div className="w-[24px] text-sm bg-red-600 text-white rounded-full">
+              {cartItem.length}
+            </div>
           </button>
           <button
             type="button"

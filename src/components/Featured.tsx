@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useGetLatestProductsQuery } from "../redux/features/product/productAPI";
 import { TProduct } from "../types/product.type";
 import { Button } from "./ui/Button";
@@ -5,7 +6,10 @@ import { ProductCard } from "./ui/ProductCard";
 
 export const Featured = () => {
   const { data } = useGetLatestProductsQuery(undefined);
-
+  const navigate = useNavigate();
+  const goToProductsPage = () => {
+    navigate("/products");
+  };
   return (
     <div className=" mt-[100px] flex flex-col justify-center items-center">
       <div className=" my-3 block text-center">
@@ -29,7 +33,7 @@ export const Featured = () => {
         })}
       </div>
       <div className=" my-[50px]">
-        <Button title="View More" />
+        <Button onClickFunc={goToProductsPage} title="View More" />
       </div>
     </div>
   );

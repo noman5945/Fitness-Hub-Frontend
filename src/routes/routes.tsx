@@ -6,6 +6,8 @@ import { AboutUs } from "../page/AboutUs";
 import { Cart } from "../page/Cart";
 import { ProductDetails } from "../page/ProductDetails";
 import { CheckOut } from "../page/CheckOut";
+import { CheckoutSuccess } from "../page/CheckoutSuccess";
+import { CheckoutError } from "../page/CheckoutError";
 
 const routes = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const routes = createBrowserRouter([
       {
         path: "/payment",
         element: <CheckOut />,
+      },
+      {
+        path: "/payment-success",
+        element: <CheckoutSuccess />,
+      },
+      {
+        path: "/payment-error",
+        element: <CheckoutError />,
       },
     ],
   },

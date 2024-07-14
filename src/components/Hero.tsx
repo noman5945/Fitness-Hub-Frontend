@@ -15,9 +15,9 @@ export const Hero = () => {
             </strong>
           </h1>
 
-          <p className="mt-4 max-w-lg text-white sm:text-xl/relaxed">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nesciunt
-            illo tenetur fuga ducimus numquam ea!
+          <p className="mt-4 max-w-lg text-white md:text-base/relaxed sm:text-xl/relaxed">
+            Find Your Ideal Gym Tools. Discover top-quality accessories to
+            enhance your fitness journey and achieve your goals today!
           </p>
 
           <div className="mt-8 flex flex-wrap gap-4 text-center justify-center">

@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import toast from "react-hot-toast";
 
 export type cartStructure = {
   _id: string;
@@ -27,6 +28,9 @@ const cartSlice = createSlice({
       );
       if (!duplicate) {
         state.cartItem.push({ ...action.payload, customerQty: 1 });
+        toast.success("Item Added to Cart");
+      } else {
+        toast.error("Item already exist in the cart");
       }
     },
     removeCartItem: (state, action: PayloadAction<string>) => {
